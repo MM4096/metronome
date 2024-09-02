@@ -1,0 +1,74 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://h4rxtsecscvb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehcxe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3fbf"]
+bg_color = Color(0.883378, 0.883378, 0.883378, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywuu7"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcwiw"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fadoe"]
+bg_color = Color(0.837469, 0.837469, 0.837469, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhkcu"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scsus"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ansg"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6aqq"]
+bg_color = Color(0.947199, 0.947199, 0.947199, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1ls5"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f48cn"]
+bg_color = Color(0.752582, 0.752582, 0.752582, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgvtu"]
+bg_color = Color(0.900705, 0.900705, 0.900705, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_482af"]
+bg_color = Color(1, 1, 1, 1)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.226708, 0.226707, 0.226707, 0.5)
+Button/colors/font_focus_color = Color(0.0701518, 0.0701527, 0.0701525, 1)
+Button/colors/font_hover_color = Color(0.0911207, 0.0911217, 0.0911215, 1)
+Button/colors/font_hover_pressed_color = Color(0.221902, 0.221902, 0.221902, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.236334, 0.236334, 0.236334, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_ehcxe")
+Button/styles/focus = SubResource("StyleBoxFlat_e3fbf")
+Button/styles/hover = SubResource("StyleBoxFlat_ywuu7")
+Button/styles/normal = SubResource("StyleBoxFlat_jcwiw")
+Button/styles/pressed = SubResource("StyleBoxFlat_fadoe")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_xhkcu")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_scsus")
+HSlider/styles/slider = SubResource("StyleBoxFlat_6ansg")
+Label/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_outline_color = Color(1, 1, 1, 1)
+LineEdit/colors/font_placeholder_color = Color(0.16446, 0.16446, 0.16446, 0.6)
+LineEdit/colors/font_selected_color = Color(0.174028, 0.174028, 0.174028, 1)
+LineEdit/colors/font_uneditable_color = Color(0, 0, 0, 0.5)
+LineEdit/styles/focus = SubResource("StyleBoxFlat_d6aqq")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_a1ls5")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_f48cn")
+PopupMenu/colors/font_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_hover_color = Color(0.0755101, 0.0755101, 0.07551, 1)
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_rgvtu")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_482af")

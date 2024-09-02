@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://byspii04bheek"]
+
+[ext_resource type="Script" path="res://scripts/settings/settings_ui/settings_objects/settings_toggle.gd" id="1_xqgk8"]
+
+[node name="CheckButton" type="CheckButton" node_paths=PackedStringArray("check_button")]
+offset_right = 44.0
+offset_bottom = 24.0
+text = "Sample Text"
+script = ExtResource("1_xqgk8")
+check_button = NodePath(".")

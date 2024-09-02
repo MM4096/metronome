@@ -1,0 +1,328 @@
+[gd_scene load_steps=21 format=3 uid="uid://de60qyx7f4vwd"]
+
+[ext_resource type="Script" path="res://scripts/view_changer.gd" id="1_4fysw"]
+[ext_resource type="FontFile" uid="uid://co0qievtsuyk1" path="res://font/SpaceMono-Bold.ttf" id="1_324kp"]
+[ext_resource type="Script" path="res://scripts/metronome/metronome.gd" id="1_knxqm"]
+[ext_resource type="Theme" uid="uid://h4rxtsecscvb" path="res://themes/light.tres" id="1_s4sxa"]
+[ext_resource type="Script" path="res://scripts/metronome/ui/metronome_ui_controller.gd" id="2_pdh51"]
+[ext_resource type="Texture2D" uid="uid://d2wwaxak8kjmq" path="res://images/cog.png" id="2_q54sa"]
+[ext_resource type="Theme" uid="uid://ujx6t0cccduy" path="res://themes/dark.tres" id="3_hdabh"]
+[ext_resource type="PackedScene" uid="uid://bhp7s3aa48phg" path="res://scenes/slider.tscn" id="3_k4svt"]
+[ext_resource type="PackedScene" uid="uid://c4v10bu1dkatj" path="res://scenes/beat.tscn" id="3_yei02"]
+[ext_resource type="Texture2D" uid="uid://dc05tj2hyba6a" path="res://images/cog_hover.png" id="6_1gb13"]
+[ext_resource type="Script" path="res://scripts/metronome/metronome_audio.gd" id="7_vkno7"]
+[ext_resource type="Script" path="res://scripts/settings/settings_ui/settings_ui.gd" id="8_404ve"]
+[ext_resource type="AudioStream" uid="uid://cvg704hj5qqqi" path="res://audio/click/high_click.wav" id="8_s28rs"]
+[ext_resource type="AudioStream" uid="uid://b0gwxu8fdgxfc" path="res://audio/click/mid_click.wav" id="9_rjqqp"]
+[ext_resource type="AudioStream" uid="uid://dylo6hbnrbx12" path="res://audio/click/low_click.wav" id="10_h0kxh"]
+[ext_resource type="PackedScene" uid="uid://byspii04bheek" path="res://scenes/settings/check_button.tscn" id="10_om8vn"]
+[ext_resource type="PackedScene" uid="uid://rg2t3wprhket" path="res://scenes/settings/option_button.tscn" id="11_6ba21"]
+[ext_resource type="Script" path="res://scripts/settings/settings.gd" id="11_18vbv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f08ve"]
+font = ExtResource("1_324kp")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_cntwd"]
+
+[node name="main" type="Control" node_paths=PackedStringArray("background")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4fysw")
+pages = {
+"metronome": NodePath("metronome"),
+"settings": NodePath("settings")
+}
+background = NodePath("background")
+dark_background = Color(0.196078, 0.196078, 0.235294, 1)
+light_background = Color(1, 1, 1, 1)
+light_theme = ExtResource("1_s4sxa")
+dark_theme = ExtResource("3_hdabh")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.196078, 0.235294, 1)
+
+[node name="metronome" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_knxqm")
+
+[node name="main menu" type="VBoxContainer" parent="metronome" node_paths=PackedStringArray("beat_count_slider", "subsection_count_slider", "metronome_slider", "beat_container", "start_button", "tap_tempo_button")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_pdh51")
+beat_count_slider = NodePath("beats slider container h")
+subsection_count_slider = NodePath("subdivision slider")
+metronome_slider = NodePath("metronome")
+beat_container = NodePath("beat container")
+beat_prefab = ExtResource("3_yei02")
+start_button = NodePath("buttons/start")
+tap_tempo_button = NodePath("buttons/tap")
+
+[node name="space" type="Control" parent="metronome/main menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="header" type="HBoxContainer" parent="metronome/main menu"]
+layout_mode = 2
+
+[node name="space" type="Control" parent="metronome/main menu/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="metronome header" type="Label" parent="metronome/main menu/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Metronome"
+label_settings = SubResource("LabelSettings_f08ve")
+horizontal_alignment = 1
+
+[node name="settings" type="TextureButton" parent="metronome/main menu/header"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("2_q54sa")
+texture_hover = ExtResource("6_1gb13")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="space2" type="Control" parent="metronome/main menu/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="space2" type="Control" parent="metronome/main menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="beat container" type="GridContainer" parent="metronome/main menu"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 10
+
+[node name="space3" type="Control" parent="metronome/main menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="beats slider container h" parent="metronome/main menu" instance=ExtResource("3_k4svt")]
+layout_mode = 2
+value_name = "Beats"
+default_value = 4
+slider_min = 1
+slider_max = 8
+slider_step = 1
+
+[node name="space small" type="Control" parent="metronome/main menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="subdivision slider" parent="metronome/main menu" instance=ExtResource("3_k4svt")]
+layout_mode = 2
+value_name = "Subdivisions"
+slider_min = 1
+slider_max = 8
+slider_step = 1
+
+[node name="space small2" type="Control" parent="metronome/main menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="metronome" parent="metronome/main menu" instance=ExtResource("3_k4svt")]
+layout_mode = 2
+value_name = "Tempo"
+default_value = 60
+slider_min = 10
+slider_max = 300
+slider_step = 1
+do_subdivisions = false
+
+[node name="space small3" type="Control" parent="metronome/main menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="buttons" type="HBoxContainer" parent="metronome/main menu"]
+layout_mode = 2
+
+[node name="space" type="Control" parent="metronome/main menu/buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="start" type="Button" parent="metronome/main menu/buttons"]
+layout_mode = 2
+text = "Start"
+
+[node name="space small" type="Control" parent="metronome/main menu/buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.01
+
+[node name="tap" type="Button" parent="metronome/main menu/buttons"]
+layout_mode = 2
+text = "Tap Tempo"
+
+[node name="space2" type="Control" parent="metronome/main menu/buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="space small4" type="Control" parent="metronome/main menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="settings" type="Control" parent="." node_paths=PackedStringArray("settings_pane")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_404ve")
+settings_pane = NodePath("container/ScrollContainer/box")
+check_button = ExtResource("10_om8vn")
+option_button = ExtResource("11_6ba21")
+
+[node name="container" type="VBoxContainer" parent="settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="space" type="Control" parent="settings/container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="header" type="HBoxContainer" parent="settings/container"]
+layout_mode = 2
+
+[node name="space" type="Control" parent="settings/container/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="settings header" type="Label" parent="settings/container/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings"
+label_settings = SubResource("LabelSettings_f08ve")
+horizontal_alignment = 1
+
+[node name="menu" type="TextureButton" parent="settings/container/header"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("2_q54sa")
+texture_hover = ExtResource("6_1gb13")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="space2" type="Control" parent="settings/container/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="space3" type="Control" parent="settings/container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="ScrollContainer" type="ScrollContainer" parent="settings/container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="box" type="VBoxContainer" parent="settings/container/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="space4" type="Control" parent="settings/container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="ColorRect" type="ColorRect" parent="settings/container"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(0.303813, 0.303858, 0.357888, 1)
+
+[node name="space5" type="Control" parent="settings/container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="build info" type="Label" parent="settings/container"]
+layout_mode = 2
+text = "Metronome v1.0"
+label_settings = SubResource("LabelSettings_cntwd")
+
+[node name="pinfo" type="Label" parent="settings/container"]
+layout_mode = 2
+text = "Made by mm4096
+"
+label_settings = SubResource("LabelSettings_cntwd")
+
+[node name="LinkButton" type="LinkButton" parent="settings/container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Github Repo"
+underline = 1
+uri = "https://google.com"
+
+[node name="audio" type="Node" parent="." node_paths=PackedStringArray("stream_player")]
+script = ExtResource("7_vkno7")
+accented_beat = ExtResource("8_s28rs")
+normal_beat = ExtResource("9_rjqqp")
+half_beat = ExtResource("10_h0kxh")
+stream_player = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="audio"]
+
+[node name="Settings" type="Node" parent="."]
+script = ExtResource("11_18vbv")
+
+[connection signal="pressed" from="metronome/main menu/header/settings" to="." method="change_screens" binds= ["settings"]]
+[connection signal="pressed" from="settings/container/header/menu" to="." method="change_screens" binds= ["metronome"]]

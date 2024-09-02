@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4v10bu1dkatj"]
+
+[ext_resource type="Texture2D" uid="uid://dp0ilrexn7k4i" path="res://images/circle.svg" id="1_mcqfv"]
+[ext_resource type="Script" path="res://scripts/metronome/ui/beat.gd" id="2_w8or4"]
+
+[node name="beat" type="TextureRect"]
+self_modulate = Color(0.217101, 0.217101, 0.217101, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_mcqfv")
+script = ExtResource("2_w8or4")
+off = Color(0.235294, 0.235294, 0.235294, 1)
+half_beat = Color(0.435192, 0.435192, 0.435192, 1)
+normal_beat = Color(0.82606, 0.82606, 0.82606, 1)
+accented_beat = Color(1, 1, 1, 1)
+lerp_speed = 30.0

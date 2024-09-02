@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhp7s3aa48phg"]
+
+[ext_resource type="Script" path="res://scripts/metronome/ui/value_slider.gd" id="1_jq4xr"]
+
+[node name="ValueSlider" type="HBoxContainer" node_paths=PackedStringArray("label", "slider", "input")]
+script = ExtResource("1_jq4xr")
+label = NodePath("slider v/label container/Label")
+slider = NodePath("slider v/slider")
+input = NodePath("slider v/label container/LineEdit")
+
+[node name="space" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="slider v" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="label container" type="HBoxContainer" parent="slider v"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="slider v/label container"]
+layout_mode = 2
+text = "Beats: "
+horizontal_alignment = 2
+
+[node name="LineEdit" type="LineEdit" parent="slider v/label container"]
+layout_mode = 2
+text = "1"
+max_length = 4
+expand_to_text_length = true
+middle_mouse_paste_enabled = false
+
+[node name="slider" type="HSlider" parent="slider v"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.8
+min_value = 1.0
+max_value = 8.0
+value = 1.0
+
+[node name="space2" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
